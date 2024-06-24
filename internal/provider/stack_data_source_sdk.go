@@ -9,7 +9,7 @@ import (
 	"time"
 )
 
-func (r *StackDataSourceModel) RefreshFromSharedStacksV1StackConfig(resp shared.StacksV1StackConfig) {
+func (r *StackDataSourceModel) RefreshFromSharedStacksV1StackConfig(resp *shared.StacksV1StackConfig) {
 	if resp.Authz == nil {
 		r.Authz = nil
 	} else {

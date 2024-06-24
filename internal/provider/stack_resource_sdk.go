@@ -62,7 +62,7 @@ func (r *StackResourceModel) ToSharedStacksV1StacksPostRequest() *shared.StacksV
 	return &out
 }
 
-func (r *StackResourceModel) RefreshFromSharedStacksV1StackConfig(resp shared.StacksV1StackConfig) {
+func (r *StackResourceModel) RefreshFromSharedStacksV1StackConfig(resp *shared.StacksV1StackConfig) {
 	if resp.Authz == nil {
 		r.Authz = nil
 	} else {

@@ -2575,11 +2575,11 @@ func (r *SystemResource) Create(ctx context.Context, req resource.CreateRequest,
 		resp.Diagnostics.AddError(fmt.Sprintf("unexpected response from API. Got an unexpected response code %v", res.StatusCode), debugResponse(res.RawResponse))
 		return
 	}
-	if res.SystemsV1SystemsPostResponse == nil {
-		resp.Diagnostics.AddError("unexpected response from API. No response body", debugResponse(res.RawResponse))
+	if !(res.SystemsV1SystemsPostResponse != nil) {
+		resp.Diagnostics.AddError("unexpected response from API. Got an unexpected response body", debugResponse(res.RawResponse))
 		return
 	}
-	data.RefreshFromSharedSystemsV1SystemConfig(res.SystemsV1SystemsPostResponse.Result)
+	data.RefreshFromSharedSystemsV1SystemConfig(&res.SystemsV1SystemsPostResponse.Result)
 	refreshPlan(ctx, plan, &data, resp.Diagnostics)
 	system := data.ID.ValueString()
 	request1 := operations.GetSystemRequest{
@@ -2601,8 +2601,8 @@ func (r *SystemResource) Create(ctx context.Context, req resource.CreateRequest,
 		resp.Diagnostics.AddError(fmt.Sprintf("unexpected response from API. Got an unexpected response code %v", res1.StatusCode), debugResponse(res1.RawResponse))
 		return
 	}
-	if res1.SystemsV1SystemsGetResponse == nil {
-		resp.Diagnostics.AddError("unexpected response from API. No response body", debugResponse(res1.RawResponse))
+	if !(res1.SystemsV1SystemsGetResponse != nil) {
+		resp.Diagnostics.AddError("unexpected response from API. Got an unexpected response body", debugResponse(res1.RawResponse))
 		return
 	}
 	data.RefreshFromSharedSystemsV1SystemsGetResponse(res1.SystemsV1SystemsGetResponse)
@@ -2654,8 +2654,8 @@ func (r *SystemResource) Read(ctx context.Context, req resource.ReadRequest, res
 		resp.Diagnostics.AddError(fmt.Sprintf("unexpected response from API. Got an unexpected response code %v", res.StatusCode), debugResponse(res.RawResponse))
 		return
 	}
-	if res.SystemsV1SystemsGetResponse == nil {
-		resp.Diagnostics.AddError("unexpected response from API. No response body", debugResponse(res.RawResponse))
+	if !(res.SystemsV1SystemsGetResponse != nil) {
+		resp.Diagnostics.AddError("unexpected response from API. Got an unexpected response body", debugResponse(res.RawResponse))
 		return
 	}
 	data.RefreshFromSharedSystemsV1SystemsGetResponse(res.SystemsV1SystemsGetResponse)
@@ -2700,11 +2700,11 @@ func (r *SystemResource) Update(ctx context.Context, req resource.UpdateRequest,
 		resp.Diagnostics.AddError(fmt.Sprintf("unexpected response from API. Got an unexpected response code %v", res.StatusCode), debugResponse(res.RawResponse))
 		return
 	}
-	if res.SystemsV1SystemsPutResponse == nil {
-		resp.Diagnostics.AddError("unexpected response from API. No response body", debugResponse(res.RawResponse))
+	if !(res.SystemsV1SystemsPutResponse != nil) {
+		resp.Diagnostics.AddError("unexpected response from API. Got an unexpected response body", debugResponse(res.RawResponse))
 		return
 	}
-	data.RefreshFromSharedSystemsV1SystemConfig(res.SystemsV1SystemsPutResponse.Result)
+	data.RefreshFromSharedSystemsV1SystemConfig(&res.SystemsV1SystemsPutResponse.Result)
 	refreshPlan(ctx, plan, &data, resp.Diagnostics)
 	system1 := data.ID.ValueString()
 	request1 := operations.GetSystemRequest{
@@ -2726,8 +2726,8 @@ func (r *SystemResource) Update(ctx context.Context, req resource.UpdateRequest,
 		resp.Diagnostics.AddError(fmt.Sprintf("unexpected response from API. Got an unexpected response code %v", res1.StatusCode), debugResponse(res1.RawResponse))
 		return
 	}
-	if res1.SystemsV1SystemsGetResponse == nil {
-		resp.Diagnostics.AddError("unexpected response from API. No response body", debugResponse(res1.RawResponse))
+	if !(res1.SystemsV1SystemsGetResponse != nil) {
+		resp.Diagnostics.AddError("unexpected response from API. Got an unexpected response body", debugResponse(res1.RawResponse))
 		return
 	}
 	data.RefreshFromSharedSystemsV1SystemsGetResponse(res1.SystemsV1SystemsGetResponse)

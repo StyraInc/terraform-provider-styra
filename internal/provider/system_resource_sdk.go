@@ -787,7 +787,7 @@ func (r *SystemResourceModel) ToSharedSystemsV1SystemsPostRequest() *shared.Syst
 	return &out
 }
 
-func (r *SystemResourceModel) RefreshFromSharedSystemsV1SystemConfig(resp shared.SystemsV1SystemConfig) {
+func (r *SystemResourceModel) RefreshFromSharedSystemsV1SystemConfig(resp *shared.SystemsV1SystemConfig) {
 	r.Authz.RoleBindings = []tfTypes.SystemsV1V1RoleBindingConfig{}
 	if len(r.Authz.RoleBindings) > len(resp.Authz.RoleBindings) {
 		r.Authz.RoleBindings = r.Authz.RoleBindings[:len(resp.Authz.RoleBindings)]
